@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// Data Dummy untuk Lowongan Kerja
+// Data Dummy
 const dummyJobs = [
   { id: 1, title: "Frontend Developer (React)", company: "Tech Solusindo", location: "Jakarta Selatan", salary: "Rp 8-12 Juta", logo: "/globe.svg" },
   { id: 2, title: "Digital Marketing Specialist", company: "Cemerlang Jaya", location: "Surabaya", salary: "Rp 6-9 Juta", logo: "/globe.svg" },
@@ -8,12 +8,8 @@ const dummyJobs = [
   { id: 4, title: "Back-end Engineer (Golang)", company: "Inovasi Digital", location: "Bandung", salary: "Rp 10-15 Juta", logo: "/globe.svg" },
   { id: 5, title: "Social Media Admin", company: "Fashionista", location: "Jakarta Barat", salary: "Rp 4-6 Juta", logo: "/globe.svg" },
   { id: 6, title: "Data Analyst", company: "DataCrunchers", location: "Tangerang", salary: "Rp 9-13 Juta", logo: "/globe.svg" },
-  { id: 7, title: "UI/UX Designer", company: "Creative Hub", location: "Jakarta Pusat", salary: "Rp 7-11 Juta", logo: "/globe.svg" },
-  { id: 8, title: "Finance Staff", company: "Abadi Jaya Mandiri", location: "Semarang", salary: "Rp 5-8 Juta", logo: "/globe.svg" },
-  { id: 9, title: "DevOps Engineer", company: "CloudNets", location: "Remote", salary: "Rp 12-18 Juta", logo: "/globe.svg" },
 ];
 
-// Data Dummy untuk Kategori Unggulan
 const dummyCategories = [
   { id: 1, name: "Informasi Teknologi (IT)", count: "1,250 Lowongan", icon: "/globe.svg" },
   { id: 2, name: "Pemasaran & Penjualan", count: "890 Lowongan", icon: "/globe.svg" },
@@ -22,28 +18,30 @@ const dummyCategories = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-zinc-50 font-sans text-zinc-900">
-
-      {/* --- HEADER (Navigasi Manual) --- */}
-      <header className="w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white shadow-md">
+    <div className="flex flex-col min-h-screen bg-[#DDEEF3] font-sans text-[#1A313C]">
+      
+      {/* --- HEADER --- */}
+      <header className="w-full bg-[#1A313C] text-[#DDEEF3] shadow-md sticky top-0 z-50">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between max-w-7xl">
           <div className="flex items-center gap-2">
-            <Image
-              src="/globe.svg"
-              alt="JobStreet Logo"
-              width={140}
-              height={35}
-              priority
-              className="object-contain"
-            />
+            <div className="bg-[#6096BA] p-1.5 rounded-lg">
+                <Image src="/globe.svg" alt="Logo" width={24} height={24} className="brightness-200" />
+            </div>
+            <span className="font-black text-2xl tracking-tighter uppercase italic">LOKAK<span className="text-[#A3CEDC]">BEGAWE</span></span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <a href="/job" className="px-4 py-2 rounded text-sm font-medium hover:bg-white/10 transition">Cari Lowongan</a>
-            <a href="/profile" className="px-4 py-2 rounded text-sm font-medium hover:bg-white/10 transition">Profil Saya</a>
-            <a href="/company" className="px-4 py-2 rounded text-sm font-medium hover:bg-white/10 transition">Perusahaan</a>
-            <a href="/help" className="px-4 py-2 rounded text-sm font-medium hover:bg-white/10 transition">Bantuan</a>
-            <a href="/auth" className="ml-2 px-5 py-2 rounded-full bg-white text-blue-600 text-sm font-semibold hover:bg-zinc-100 transition shadow">Login / Daftar</a>
+          <div className="hidden md:flex items-center gap-4">
+            <a href="/job" className="px-4 py-2 text-sm font-bold hover:text-[#A3CEDC] transition">Cari Loker</a>
+            <a href="/company" className="px-4 py-2 text-sm font-bold hover:text-[#A3CEDC] transition">Mitra Kami</a>
+            
+            <div className="flex items-center gap-2 border-l border-white/10 pl-4">
+              <a href="/auth/user" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#DDEEF3] text-[#1A313C] text-xs font-black hover:bg-[#6096BA] hover:text-white transition group">
+                <span className="opacity-70 group-hover:opacity-100">👤</span> LOGIN USER
+              </a>
+              <a href="/auth/company" className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#6096BA] text-white text-xs font-black hover:bg-white hover:text-[#6096BA] transition group shadow-lg shadow-blue-900/20">
+                <span className="brightness-200">🏢</span> LOGIN MITRA
+              </a>
+            </div>
           </div>
         </nav>
       </header>
@@ -52,78 +50,100 @@ export default function Home() {
         
         {/* --- 1. SEARCH BAR --- */}
         <section className="py-12">
-          <div className="w-full p-6 bg-white rounded-lg shadow-lg border border-zinc-100 flex items-center gap-4">
-            <div className="flex-1">
-              <input type="text" placeholder="Cari posisi, perusahaan, atau keahlian..." className="w-full p-4 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-blue-300 outline-none transition" />
+          <div className="w-full p-2 bg-white rounded-2xl shadow-xl shadow-blue-900/5 border-2 border-[#1A313C]/10 flex flex-col md:flex-row items-center gap-2">
+            <div className="flex-1 flex items-center gap-3 px-4">
+              <span className="text-[#6096BA] font-bold text-xl">🔍</span>
+              <input 
+                type="text" 
+                placeholder="Cari kerja apa hari ini?" 
+                className="w-full p-4 bg-transparent outline-none font-medium placeholder:text-stone-400" 
+              />
             </div>
-            <div className="w-1/3">
-              <input type="text" placeholder="Lokasi (misal: Jakarta)" className="w-full p-4 border border-zinc-200 rounded-lg focus:ring-2 focus:ring-blue-300 outline-none transition" />
+            <div className="hidden md:block w-[1.5px] h-8 bg-stone-200"></div>
+            <div className="flex-1 flex items-center gap-3 px-4">
+              <span className="text-[#6096BA] font-bold text-xl">📍</span>
+              <input 
+                type="text" 
+                placeholder="Lokasi" 
+                className="w-full p-4 bg-transparent outline-none font-medium placeholder:text-stone-400" 
+              />
             </div>
-            <button className="h-full px-10 py-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition shadow-md">Cari Kerja</button>
-          </div>
-        </section>
-
-        {/* --- TEMPAT INPUT DATA JOBDESK --- */}
-        <section className="mb-10 p-8 bg-white rounded-xl shadow-md border border-zinc-200">
-          <h2 className="text-xl font-bold mb-4 text-zinc-800">Input Deskripsi Pekerjaan (Jobdesk)</h2>
-          <div className="flex flex-col gap-4">
-            <div>
-              <label className="block text-sm font-semibold text-zinc-600 mb-1">Judul Posisi</label>
-              <input type="text" placeholder="Contoh: Senior Web Developer" className="w-full p-3 border border-zinc-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-zinc-600 mb-1">Tanggung Jawab Pekerjaan</label>
-              <textarea 
-                rows={6} 
-                placeholder="Sebutkan poin-poin jobdesk di sini..." 
-                className="w-full p-4 border border-zinc-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-              ></textarea>
-            </div>
-            <button className="w-fit px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition">
-              Simpan & Publikasikan
+            <button className="w-full md:w-auto px-12 py-4 bg-[#6096BA] text-white rounded-xl font-black uppercase tracking-wider hover:bg-[#1A313C] transition-all active:scale-95 shadow-md">
+              CARI
             </button>
           </div>
         </section>
 
-        {/* --- 2. DAFTAR LOWONGAN (GRID 3x3) --- */}
+        {/* --- 2. BANNER PROMOSI --- */}
+        <section className="mb-16 relative overflow-hidden bg-[#1A313C] rounded-[3rem] p-12 text-[#DDEEF3] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-[#6096BA]">
+          <div className="z-10 text-center md:text-left space-y-4">
+            <span className="bg-[#6096BA] px-4 py-1 rounded-full text-[10px] font-black tracking-widest uppercase text-white">Edisi 2026</span>
+            <h2 className="text-5xl font-black italic tracking-tighter leading-none uppercase">
+              Cari Kerja <br /> <span className="text-[#A3CEDC]">Gak Pake Ribet!</span>
+            </h2>
+            <p className="text-[#DDEEF3]/60 font-medium max-w-md">
+              Ribuan lowongan dari perusahaan terverifikasi menunggumu. Gabung sekarang dan mulai karir impianmu.
+            </p>
+            <div className="flex gap-4 pt-4 justify-center md:justify-start">
+              <button className="bg-[#DDEEF3] text-[#1A313C] px-8 py-3 rounded-xl font-black text-xs uppercase italic hover:bg-[#6096BA] hover:text-white transition">Daftar Sekarang</button>
+              <button className="border-2 border-[#DDEEF3]/20 px-8 py-3 rounded-xl font-black text-xs uppercase italic hover:border-[#6096BA] transition">Pelajari Lebih</button>
+            </div>
+          </div>
+          <div className="relative w-64 h-64 opacity-20 md:opacity-100">
+             <Image src="/globe.svg" alt="Banner Illustration" fill className="object-contain brightness-200" />
+          </div>
+        </section>
+
+        {/* --- 3. LOWONGAN TERBARU --- */}
         <section className="py-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-4">
+              <h3 className="text-3xl font-black uppercase italic tracking-tight">Lowongan <span className="text-[#6096BA]">Terbaru</span></h3>
+              <div className="hidden md:block w-24 h-[2px] bg-[#1A313C]/10"></div>
+            </div>
+            <a href="/jobs" className="text-xs font-black uppercase border-b-2 border-[#6096BA] pb-1 hover:text-[#6096BA] transition">Lihat Semua Pekerjaan</a>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {dummyJobs.map((job) => (
-              <div key={job.id} className="p-6 bg-white rounded-xl border border-zinc-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col gap-4 group">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-zinc-100 rounded-lg border border-zinc-200 flex items-center justify-center overflow-hidden p-2">
-                     <Image src={job.logo} alt="logo" width={60} height={60} className="object-contain" />
+              <div key={job.id} className="p-8 bg-white rounded-[2.5rem] border-2 border-transparent hover:border-[#6096BA] shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 group flex flex-col relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-2 h-full bg-[#1A313C] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-14 h-14 bg-[#DDEEF3] rounded-2xl flex items-center justify-center border border-[#1A313C]/5 overflow-hidden p-2">
+                     <Image src={job.logo} alt="logo" width={28} height={28} className="object-contain" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-blue-700 group-hover:text-blue-600 transition truncate">{job.title}</h3>
-                    <p className="text-zinc-700 font-medium truncate">{job.company}</p>
-                    <p className="text-sm text-zinc-500">{job.location}</p>
+                  <span className="text-[10px] font-black uppercase tracking-widest bg-[#1A313C] text-white px-3 py-1 rounded-full">New Update</span>
+                </div>
+                
+                <h3 className="text-xl font-black text-[#1A313C] leading-tight mb-2 group-hover:text-[#6096BA] transition">{job.title}</h3>
+                <p className="text-stone-400 font-bold text-xs mb-6 uppercase tracking-wide">{job.company}</p>
+                
+                <div className="mt-auto space-y-4 pt-6 border-t border-[#DDEEF3]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-black text-[#6096BA]">{job.salary}</span>
+                    <span className="text-[10px] font-black text-stone-400 uppercase tracking-tighter">📍 {job.location}</span>
                   </div>
+                  <button className="w-full py-4 bg-[#DDEEF3] text-[#1A313C] rounded-xl text-xs font-black uppercase tracking-widest group-hover:bg-[#1A313C] group-hover:text-white transition-all italic">
+                      LIHAT DETAIL
+                  </button>
                 </div>
-                <div className="flex items-center justify-between text-sm mt-auto border-t border-zinc-100 pt-4">
-                  <span className="font-semibold text-green-700">{job.salary}</span>
-                  <span className="text-zinc-400">1 hari yang lalu</span>
-                </div>
-                <button className="w-full mt-2 py-2.5 bg-zinc-100 text-blue-700 rounded-lg text-sm font-semibold group-hover:bg-blue-600 group-hover:text-white transition">
-                    Lamar Sekarang
-                </button>
               </div>
             ))}
           </div>
         </section>
 
-        {/* --- 3. KATEGORI UNGGULAN --- */}
-        <section className="py-16 mt-12 bg-blue-50/50 rounded-2xl border border-blue-100 px-10 text-center">
-            <h2 className="text-3xl font-bold mb-10 text-zinc-800">Jelajahi Berdasarkan Kategori Unggulan</h2>
+        {/* --- KATEGORI UNGGULAN --- */}
+        <section className="py-20 mt-16 bg-white rounded-[3.5rem] px-10 text-center border-2 border-[#1A313C]/5">
+            <h2 className="text-3xl font-black mb-12 text-[#1A313C] uppercase italic tracking-tighter">Telusuri <span className="text-[#6096BA]">Kategori</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {dummyCategories.map((cat) => (
-                <div key={cat.id} className="p-8 bg-white rounded-2xl border border-zinc-100 shadow hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center gap-6">
-                  <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center p-5">
-                     <Image src={cat.icon} alt="icon" width={60} height={60} className="object-contain" />
+                <div key={cat.id} className="p-10 bg-[#DDEEF3] rounded-[2.5rem] flex flex-col items-center gap-4 group hover:bg-[#1A313C] transition-all duration-500 cursor-pointer">
+                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center p-4 shadow-sm group-hover:bg-[#6096BA] transition-colors">
+                     <Image src={cat.icon} alt="icon" width={32} height={32} className="group-hover:brightness-200 transition-all" />
                   </div>
-                  <h4 className="text-xl font-bold text-zinc-900">{cat.name}</h4>
-                  <p className="text-sm text-zinc-600 bg-zinc-100 px-4 py-1 rounded-full font-medium">{cat.count}</p>
-                  <a href="#" className="text-sm text-blue-600 font-semibold hover:underline">Lihat Semua →</a>
+                  <h4 className="text-lg font-black text-[#1A313C] uppercase group-hover:text-white transition">{cat.name}</h4>
+                  <p className="text-[10px] font-black text-[#6096BA] tracking-[0.2em]">{cat.count}</p>
                 </div>
               ))}
             </div>
@@ -131,36 +151,34 @@ export default function Home() {
       </main>
 
       {/* --- FOOTER --- */}
-      <footer className="w-full mt-20 bg-white border-t border-zinc-100 text-zinc-600 py-12 px-6">
-        <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-5 gap-8">
-            <div className="col-span-2 flex flex-col gap-4">
-                <Image src="/globe.svg" alt="Logo" width={140} height={35}/>
-                <p className="text-sm">Platform pencarian kerja terkemuka menghubungkan jutaan pencari kerja dengan perusahaan impian.</p>
+      <footer className="w-full mt-24 bg-[#1A313C] text-[#DDEEF3] py-20 px-6 border-t-8 border-[#6096BA]">
+        <div className="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-[#DDEEF3]/10 pb-16">
+            <div className="col-span-1 md:col-span-1">
+                <div className="flex items-center gap-2 mb-8">
+                  <div className="w-10 h-10 bg-[#6096BA] rounded-xl flex items-center justify-center font-black text-white text-xl">K</div>
+                  <span className="text-white font-black text-2xl uppercase italic tracking-tighter">LOKAK<span className="text-[#A3CEDC]">BEGAWE</span></span>
+                </div>
+                <p className="text-sm text-[#DDEEF3]/60 font-medium leading-relaxed">Platform pencarian kerja masa kini dengan tampilan clean dan minimalis.</p>
             </div>
-            <div>
-                <h5 className="font-bold text-zinc-800 mb-4">Pencari Kerja</h5>
-                <ul className="text-sm space-y-2">
-                    <li><a href="#" className="hover:text-blue-600">Cari Kerja</a></li>
-                    <li><a href="#" className="hover:text-blue-600">Profil</a></li>
-                </ul>
+            <div className="space-y-4">
+                <h5 className="text-[#6096BA] font-black text-xs uppercase tracking-[0.2em] mb-6">Navigasi</h5>
+                <a href="#" className="block text-sm font-bold hover:text-[#6096BA] transition">Tentang Kami</a>
+                <a href="#" className="block text-sm font-bold hover:text-[#6096BA] transition">Pusat Bantuan</a>
             </div>
-            <div>
-                <h5 className="font-bold text-zinc-800 mb-4">Perusahaan</h5>
-                <ul className="text-sm space-y-2">
-                    <li><a href="#" className="hover:text-blue-600">Pasang Iklan</a></li>
-                    <li><a href="#" className="hover:text-blue-600">Pusat HR</a></li>
-                </ul>
+            <div className="space-y-4">
+                <h5 className="text-[#6096BA] font-black text-xs uppercase tracking-[0.2em] mb-6">Sosial Media</h5>
+                <a href="#" className="block text-sm font-bold hover:text-[#6096BA] transition italic">Instagram</a>
+                <a href="#" className="block text-sm font-bold hover:text-[#6096BA] transition italic">LinkedIn</a>
             </div>
-            <div>
-                <h5 className="font-bold text-zinc-800 mb-4">Bantuan</h5>
-                <ul className="text-sm space-y-2">
-                    <li><a href="#" className="hover:text-blue-600">Tentang Kami</a></li>
-                    <li><a href="#" className="hover:text-blue-600">Kontak</a></li>
-                </ul>
+            <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-16 h-16 bg-[#6096BA] opacity-10 rounded-full -mr-8 -mt-8"></div>
+                <h5 className="text-white font-black text-sm mb-4 uppercase tracking-tighter">Newsletter</h5>
+                <input type="email" placeholder="Email kamu..." className="w-full p-4 rounded-xl bg-white/10 border border-white/10 text-xs mb-3 outline-none focus:border-[#6096BA]" />
+                <button className="w-full py-4 bg-[#6096BA] text-white font-black rounded-xl text-xs uppercase tracking-widest hover:bg-white hover:text-[#1A313C] transition-all italic shadow-xl shadow-blue-900/40">GABUNG</button>
             </div>
         </div>
-        <div className="container mx-auto max-w-7xl mt-10 text-center text-xs border-t border-zinc-100 pt-6">
-            © 2026 Portal Kerja. All rights reserved.
+        <div className="container mx-auto max-w-7xl mt-10 text-center">
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-[#DDEEF3]/20">© 2026 LOKAK BEGAWE • KARYA POLIM RECRUITMENT</p>
         </div>
       </footer>
     </div>
